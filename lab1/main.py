@@ -27,19 +27,3 @@ class Stack:
 
     def isEmpty(self):
         return self.head is None
-
-
-def main():
-    stack = generateNodes(10)
-
-    print(stack.head.data)
-
-def generateNodes(n):
-    stack = Stack()
-    while n > 0:
-        stack.push(Node(n))
-        n -= 1
-    return stack
-
-
-main()

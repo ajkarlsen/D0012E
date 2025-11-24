@@ -3,7 +3,7 @@ import random
 import time
 
 
-def generateNodes(n):
+def generateNodes1(n):
     stack = Stack()
 
     for i in range(n):
@@ -18,11 +18,17 @@ def generateNodes2(n):
         stack.push(i)
     return stack
 
+def generateNodes3(n):
+    stack = Stack()
+    for i in range(n):
+        stack.push(i)
+    return stack
+
 def sortStack(n):
     # i = 0
-    start = time.time()
     sortedStack = Stack()
-    unsortedStack = generateNodes(n)
+    unsortedStack = generateNodes2(n)
+    start = time.time()
 
 
     while not unsortedStack.isEmpty():
@@ -53,11 +59,10 @@ def sortStack(n):
         # i+=1
         # n + n(n-1)/2 = (n^2+n)/2
 
-
     end = time.time()
-    while not sortedStack.isEmpty():
-        print(sortedStack.pop())
+    #while not sortedStack.isEmpty():
+       # print(sortedStack.pop())
     print(f"Total runtime of the program is {end - start} seconds")
     # print("i: ",i)
+    return end - start
 
-sortStack(10000)
