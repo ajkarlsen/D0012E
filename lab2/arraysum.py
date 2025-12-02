@@ -7,39 +7,28 @@ def genArray(n):
         n = n-1
     return array
 
-def algorithm1(array):
-    if len(array)<=3:
-        return False
-    j = 0
-    while j < len(array):
-        k = j+1
-        while k < len(array):
-            if array[0] + array[j] == array[k]:
-                return True
-            k += 1
-        j += 1
-    return algorithm1(array[1:])
 
-
-#def algorithm2(array, exTargets=None):
+def algorithm20(array, index=0, exTargets=None):
     if exTargets is None:
-        exTargets = {}
+        exTargets = set()
 
-    if array==[]:
+    if index >= len(array):
         return False
 
-    target = array[0]
+    target = array[index]
 
     for element in exTargets:
-        needed = target-element
+        needed = target - element
 
         if needed in exTargets and needed != element:
             return True
 
-    exTargets[target] = ""
-    return algorithm2(array[1:], exTargets)
+        sum = target + element
+        if sum in exTargets and sum != element:
+            return True
+    exTargets.add(target)
 
-
+    return algorithm20(array, index + 1, exTargets)
 
 def algorithm2(A, n):
 
@@ -107,3 +96,37 @@ def algorithm2(A, n):
 
     return False
 
+
+def algorithm1(A, n):
+
+    if n < 3:
+        return False
+
+    if algorithm1(A, n - 1):
+        return True
+
+    target = A[n - 1]
+
+    i = 0
+    while i < n - 1:
+        j = i + 1
+        while j < n - 1:
+            x = A[i]
+            y = A[j]
+
+
+            if x + y == target:
+                return True
+
+
+            if x + target == y:
+                return True
+
+
+            if y + target == x:
+                return True
+
+            j += 1
+        i += 1
+
+    return False
