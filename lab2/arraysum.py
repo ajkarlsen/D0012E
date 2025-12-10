@@ -8,14 +8,14 @@ def genArray(n):
     return array
 
 
-def algorithm20(array, index=0, exTargets=None):
+def algorithm20(array, n=0, exTargets=None):
     if exTargets is None:
         exTargets = set()
 
-    if index >= len(array):
+    if n >= len(array):
         return False
 
-    target = array[index]
+    target = array[n]
 
     for element in exTargets:
         needed = target - element
@@ -28,7 +28,8 @@ def algorithm20(array, index=0, exTargets=None):
             return True
     exTargets.add(target)
 
-    return algorithm20(array, index + 1, exTargets)
+    return algorithm20(array, n + 1, exTargets)
+
 
 def algorithm2(A, n):
 
@@ -114,14 +115,11 @@ def algorithm1(A, n):
             x = A[i]
             y = A[j]
 
-
             if x + y == target:
                 return True
 
-
             if x + target == y:
                 return True
-
 
             if y + target == x:
                 return True
