@@ -31,5 +31,8 @@ def analyse(tree, function, n):
 
 start_node = Treenode(0)
 tree = AVLTree(start_node, 1)
-tree = analyse(tree, generateReverse, 10)
+tree = analyse(tree, generate_tree, 500000)
 #display(tree.root)
+print()
+tree2 = AVLTree(start_node, 3)
+tree2 = analyse(tree2, generate_tree, 500000)
